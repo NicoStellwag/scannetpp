@@ -1,6 +1,6 @@
 from semantic.transforms.common import Compose
 from semantic.transforms.mesh import AddVertexNormals, MapLabelToIndex, SamplePointsOnMesh, \
-             GetLabelsOnVertices, AddMeshVertices
+             GetLabelsOnVertices, AddMeshVertices, AddSegments
 
 
 def get_transform(data_cfg):
@@ -27,6 +27,9 @@ def get_transform(data_cfg):
     # add vtx_normals from the o3d mesh
     if 'add_normals' in transforms_list:
         transforms.append(AddVertexNormals())
+
+    if 'add_segments' in transforms_list:
+        transforms.append(AddSegments())
         
     if 'sample_points_on_mesh' in transforms_list :
         # sample points -> new coordinates with colors and labels

@@ -209,6 +209,17 @@ class AddMeshVertices:
 
         return sample
 
+class AddSegments:
+    '''
+    adds the vertex segment ids of geometric oversegmentation
+    '''
+    def __init__(self):
+        pass
+
+    def __call__(self, sample):
+        sample['vtx_segments'] = np.array(sample['segments']['segIndices'])
+        return sample
+
 class SamplePointsOnMesh:
     '''
     mesh with vertices, faces, colors -> points on mesh, colors
